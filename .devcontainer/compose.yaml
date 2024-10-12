@@ -1,5 +1,5 @@
 services:
-  app:
+  devcontainer:
     image: ubuntu:22.04
     init: true
     command: sleep infinity

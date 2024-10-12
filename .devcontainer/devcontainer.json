@@ -1,0 +1,45 @@
+{
+  "name": "${localWorkspaceFolderBasename}",
+  "dockerComposeFile": [
+    "compose.yaml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "configureZshAsDefaultShell": true,
+      "username": "deno",
+      "userUid": "1993",
+      "userGid": "1993"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "ppa": true
+    },
+    "ghcr.io/devcontainers-community/features/deno": {
+      // Specify a specific Deno version to install. Must be a full version specifier like `30.0.0` or `latest`. Default is `latest`.
+      "version": "latest"
+    }
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  // Uncomment the next line if you want start specific services in your Docker Compose config.
+  // "runServices": [],
+  // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
+  // "shutdownAction": "none",
+  // Run command on host when initializing.
+  // "initializeCommand": ".devcontainer/initializeCommand/initializeCommand.bash",
+  // Uncomment the next line to run commands after the container is created.
+  // "postCreateCommand": ".devcontainer/postCreateCommand/postCreateCommand.bash",
+  // Avoiding Dubious Ownership in Dev Containers
+  "postStartCommand": "sudo git config --system --add safe.directory ${containerWorkspaceFolder}",
+  // "postCreateCommand": "git config --system --add safe.directory ${containerWorkspaceFolder}",
+  // "customizations": {
+  //   "vscode": {
+  //     "extensions": [
+  //       "denoland.vscode-deno",
+  //       "bradlc.vscode-tailwindcss"
+  //     ]
+  //   }
+  // },
+  "remoteUser": "deno"
+}

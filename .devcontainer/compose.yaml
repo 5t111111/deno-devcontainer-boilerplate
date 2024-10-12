@@ -1,0 +1,21 @@
+services:
+  app:
+    image: ubuntu:22.04
+    init: true
+    command: sleep infinity
+    volumes:
+      - ..:/workspaces/deno-devcontainer-template:cached
+#
+#   db:
+#     image: ghcr.io/denoland/denokv
+#     init: true
+#     ports:
+#       - "4512:4512"
+#     environment:
+#       DENO_KV_SQLITE_PATH: /data/denokv.sqlite
+#       DENO_KV_ACCESS_TOKEN: very-very-secret
+#     volumes:
+#       - db-data:/data
+#
+# volumes:
+#   db-data:

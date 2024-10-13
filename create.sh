@@ -11,12 +11,12 @@ NC='\033[0m' # No Color
 # Dinosaur ASCII Art (full body)
 dino_art() {
   echo -e "${CYAN}"
-  echo "              __"
-  echo "             / _)"
-  echo "    _.----._/ /"
-  echo "   /         /"
+  echo "                __"
+  echo "               / _)"
+  echo "      _.----._/ /"
+  echo "     /         /"
   echo "  __/ (  | (  |"
-  echo "/__.-'|_|--|_|"
+  echo " /__.-'|_|--|_|"
   echo -e "${NC}"
 }
 

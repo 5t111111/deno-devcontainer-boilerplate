@@ -1,4 +1,9 @@
+# Deno Dev Container Template
+
+This is a template for a Deno development container.
+
+## Usage
 
 ```bash
-if [[ "$(uname)" == "Darwin" ]]; then sed -i '' "s/deno-devcontainer-template/$(basename $(pwd))/g" .devcontainer/compose.yaml; else sed -i "s/deno-devcontainer-template/$(basename $(pwd))/g" .devcontainer/compose.yaml; fi
+curl -fsSL https://raw.githubusercontent.com/5t111111/deno-devcontainer-template/refs/heads/main/create.sh | sh
 ```

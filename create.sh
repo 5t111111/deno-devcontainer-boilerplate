@@ -47,20 +47,17 @@ curl -L -o template.zip https://github.com/5t111111/deno-devcontainer-template/a
 
 # Unzip into the project directory, depending on the OS
 mkdir "$project_name"
-if [[ "$(uname)" == "Darwin" ]]; then
-  # Use ditto on macOS to extract the zip and include hidden files
-  ditto -xk template.zip "$project_name"
-else
-  # Use unzip on Linux and move all files including hidden files
-  unzip -q template.zip -d "$project_name"
 
-  # Move all files including hidden files
-  mv "$project_name/deno-devcontainer-template-main"/* "$project_name/"
-  mv "$project_name/deno-devcontainer-template-main"/.* "$project_name/" 2>/dev/null || true
+# Unzip into the project directory, depending on the OS
+unzip -q template.zip -d "$project_name"
 
-  # Remove the now-empty directory
-  rm -r "$project_name/deno-devcontainer-template-main"
-fi
+# Enable shopt to include hidden files (dotfiles)
+shopt -s dotglob
+mv "$project_name/deno-devcontainer-template-main"/* "$project_name/"
+shopt -u dotglob  # Disable it again to restore default behavior
+
+# Remove the now-empty directory
+rm -r "$project_name/deno-devcontainer-template-main"
 
 # Replace 'deno-devcontainer-template' with the project name in compose.yaml
 if [[ "$(uname)" == "Darwin" ]]; then

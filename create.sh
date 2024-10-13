@@ -76,7 +76,7 @@ echo "# $project_name" > "$project_name/README.md"
 rm template.zip
 
 # Remove the script file itself
-rm "$project_name/$(basename $0)"
+rm "$project_name/create.sh"
 
 # Display success message
 success_message "$project_name"

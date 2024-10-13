@@ -16,30 +16,20 @@
       "ppa": true
     },
     "ghcr.io/devcontainers-community/features/deno": {
-      // Specify a specific Deno version to install. Must be a full version specifier like `30.0.0` or `latest`. Default is `latest`.
+      // Specify a specific Deno version to install. Must be a full version
+      // specifier like `30.0.0` or `latest`. Default is `latest`.
       "version": "latest"
     }
   },
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [],
-  // Uncomment the next line if you want start specific services in your Docker Compose config.
-  // "runServices": [],
-  // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
-  // "shutdownAction": "none",
-  // Run command on host when initializing.
-  // "initializeCommand": ".devcontainer/initializeCommand/initializeCommand.bash",
-  // Uncomment the next line to run commands after the container is created.
-  // "postCreateCommand": ".devcontainer/postCreateCommand/postCreateCommand.bash",
-  // Avoiding Dubious Ownership in Dev Containers
+  "initializeCommand": ".devcontainer/initialize_command.sh",
   "postStartCommand": "sudo git config --system --add safe.directory ${containerWorkspaceFolder}",
-  // "postCreateCommand": "git config --system --add safe.directory ${containerWorkspaceFolder}",
-  // "customizations": {
-  //   "vscode": {
-  //     "extensions": [
-  //       "denoland.vscode-deno",
-  //       "bradlc.vscode-tailwindcss"
-  //     ]
-  //   }
-  // },
-  "remoteUser": "deno"
+  "postCreateCommand": "echo \"Deno version: $(deno -v)\"",
+  "remoteUser": "deno",
+  "containerEnv": {
+    // In the case of Linux, the UID and GID of the deno user are set to be the
+    // same as those of the host user, which can sometimes cause permission
+    // errors when writing to /deno-dir. To avoid this, set the DENO_DIR to a
+    // path within the home directory.
+    "DENO_DIR": "/home/deno/deno-dir"
+  }
 }

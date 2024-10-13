@@ -8,7 +8,6 @@ services:
 #
 #   db:
 #     image: ghcr.io/denoland/denokv
-#     init: true
 #     ports:
 #       - "4512:4512"
 #     environment:

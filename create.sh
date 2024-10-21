@@ -41,30 +41,30 @@ if [ -d "$project_name" ]; then
   exit 1
 fi
 
-# Download the template zip quietly
+# Download the boilerplate zip quietly
 echo -e "${CYAN}Setting up the project...${NC}"
-curl -L -o template.zip https://github.com/5t111111/deno-devcontainer-template/archive/refs/heads/main.zip > /dev/null 2>&1
+curl -L -o boilerplate.zip https://github.com/5t111111/deno-devcontainer-boilerplate/archive/refs/heads/main.zip > /dev/null 2>&1
 
 # Unzip and copy into the project directory,
-unzip -q template.zip -d "${project_name}_temp"
+unzip -q boilerplate.zip -d "${project_name}_temp"
 
-mv "${project_name}_temp/deno-devcontainer-template-main" "$project_name"
+mv "${project_name}_temp/deno-devcontainer-boilerplate-main" "$project_name"
 
 # Remove the now-empty directory
 rm -r "${project_name}_temp"
 
-# Replace 'deno-devcontainer-template' with the project name in compose.yaml
+# Replace 'deno-devcontainer-boilerplate' with the project name in compose.yaml
 if [[ "$(uname)" == "Darwin" ]]; then
-  sed -i '' "s/deno-devcontainer-template/$project_name/g" "$project_name/.devcontainer/compose.yaml"
+  sed -i '' "s/deno-devcontainer-boilerplate/$project_name/g" "$project_name/.devcontainer/compose.yaml"
 else
-  sed -i "s/deno-devcontainer-template/$project_name/g" "$project_name/.devcontainer/compose.yaml"
+  sed -i "s/deno-devcontainer-boilerplate/$project_name/g" "$project_name/.devcontainer/compose.yaml"
 fi
 
 # Overwrite README.md with the project name
 echo "# $project_name" > "$project_name/README.md"
 
 # Remove the zip file
-rm template.zip
+rm boilerplate.zip
 
 # Remove the script file itself
 rm "$project_name/create.sh"

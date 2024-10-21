@@ -4,4 +4,4 @@ services:
     init: true
     command: sleep infinity
     volumes:
-      - ..:/workspaces/deno-devcontainer-template:cached
+      - ..:/workspaces/deno-devcontainer-boilerplate:cached

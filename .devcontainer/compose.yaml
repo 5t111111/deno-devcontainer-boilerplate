@@ -1,6 +1,6 @@
 services:
   devcontainer:
-    image: ubuntu:22.04
+    image: ubuntu:24.04
     init: true
     command: sleep infinity
     volumes:

@@ -1,6 +1,6 @@
 services:
   devcontainer:
-    image: ubuntu:24.04
+    image: mcr.microsoft.com/devcontainers/base:ubuntu-24.04
     init: true
     command: sleep infinity
     volumes:
